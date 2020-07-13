@@ -63,4 +63,27 @@ yum install git -y
 ## Making it globally available
 #echo "export JAVA_HOME=/opt/$JDK_BASE_DIR
 #export JRE_HOME=/opt/$JDK_BASE_DIR/jre
-#export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin" | sudo tee /etc/profile
+#export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin" | sudo tee -a /etc/profile
+
+## Setting up Maven version specific variables
+#MAVEN_VERSION=3.6.3
+#MAVEN_DIR=apache-maven-3.6.3
+
+## Downloading
+# curl -v -j -k -L http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz > apache-maven-$MAVEN_VERSION-bin.tar.gz
+
+## Extracting to default location
+# cd /opt
+# tar xzf apache-maven-$MAVEN_VERSION-bin.tar.gz
+# cd $MAVEN_DIR/
+
+## Setting up
+# alternatives --install /usr/bin/mvn mvn /opt/$MAVEN_DIR/bin/mvn 1
+# alternatives --config mvn
+
+## Checking Maven Version 
+# mvn --version
+
+## Making it globally available
+#echo "export MAVEN_HOME=/opt/$MAVEN_DIR
+#export PATH=$PATH:$MAVEN_HOME/bin" | sudo tee -a /etc/profile
